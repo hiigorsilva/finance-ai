@@ -1,6 +1,8 @@
+import { ClerkProvider } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/app/globals.css'
-import type { Metadata } from 'next'
 
 const inter = Inter({
   display: 'swap',
@@ -41,7 +43,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+        }}
+      >
+        <body className={`${inter.className} antialiased dark`}>
+          {children}
+        </body>
+      </ClerkProvider>
     </html>
   )
 }
