@@ -20,7 +20,7 @@ const LoginPage = async () => {
 
         {/* HEADLINE */}
         <div className="flex flex-col gap-3">
-          <h1 className="font-semibold text-4xl">Bem vindo</h1>
+          <h1 className="font-bold text-4xl">Bem vindo</h1>
           <p className="text-muted-foreground">
             A Finance AI é uma plataforma de gestão financeira que utiliza IA
             para monitorar suas movimentações, e oferecer insights

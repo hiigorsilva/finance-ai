@@ -1,14 +1,14 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Mulish } from 'next/font/google'
 import '@/app/globals.css'
 
-const inter = Inter({
+const mulish = Mulish({
   display: 'swap',
-  weight: ['400', '600'],
+  weight: ['400', '700'],
   preload: true,
-  subsets: ['latin'],
+  subsets: ['latin-ext'],
   style: 'normal',
 })
 
@@ -48,7 +48,7 @@ export default function RootLayout({
           baseTheme: dark,
         }}
       >
-        <body className={`${inter.className} antialiased dark`}>
+        <body className={`${mulish.className} antialiased dark`}>
           {children}
         </body>
       </ClerkProvider>
