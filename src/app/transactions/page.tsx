@@ -4,7 +4,11 @@ import { db } from '@/lib/prisma'
 import { transactionColumns } from './columns'
 
 const TransactionsPage = async () => {
-  const transactions = await db.transaction.findMany({})
+  const transactions = await db.transaction.findMany({
+    orderBy: {
+      date: 'asc',
+    },
+  })
 
   return (
     <div>

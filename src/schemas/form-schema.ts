@@ -5,6 +5,8 @@ import {
 } from '@prisma/client'
 import { z } from 'zod'
 
+export type FormSchema = z.infer<typeof formSchema>
+
 export const formSchema = z.object({
   name: z.string().trim().min(1, {
     message: 'O nome é obrigatório',
