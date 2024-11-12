@@ -2,10 +2,20 @@
 import { AddTransactionButton } from '@/components/add-transaction-button'
 import { DataTable } from '@/components/ui/data-table'
 import { db } from '@/lib/prisma'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import { transactionColumns } from './columns'
 
 const TransactionsPage = async () => {
+  const { userId } = await auth()
+  if (!userId) {
+    return redirect('/login')
+  }
+
   const transactions = await db.transaction.findMany({
+    where: {
+      userId: userId,
+    },
     orderBy: {
       date: 'asc',
     },
