@@ -1,3 +1,4 @@
+// import { Navbar } from '@/components/Navbar'
 import { AddTransactionButton } from '@/components/add-transaction-button'
 import { DataTable } from '@/components/ui/data-table'
 import { db } from '@/lib/prisma'
