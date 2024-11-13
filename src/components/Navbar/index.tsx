@@ -9,7 +9,7 @@ export const Navbar = () => {
   const pathname = usePathname()
 
   return (
-    <nav className="flex justify-between items-center px-8 py-4 border-b border-solid">
+    <nav className="flex justify-between items-center px-6 py-4 border-b border-solid">
       {/* LEFTSIDE */}
       <div className="flex items-center gap-10">
         <Image
