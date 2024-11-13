@@ -1,26 +1,32 @@
+import { DisplayBalance } from '@/app/(home)/components/display-balance'
 import { AddTransactionButton } from '@/components/add-transaction-button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 import { formatCurrency } from '@/utils/formatCurrency'
 import type { ReactNode } from 'react'
-import { DisplayBalance } from './display-balance'
 
 type SummaryCardProps = {
   icon: ReactNode
-  title: TitleCardProps
+  title: 'Investido' | 'Receita' | 'Despesa' | 'Saldo'
   amount: number
   size?: 'small' | 'large'
+  className?: string
 }
-
-type TitleCardProps = 'Investido' | 'Receita' | 'Despesa' | 'Saldo'
 
 export const SummaryCard = ({
   icon,
   title,
   amount,
   size = 'small',
+  className,
 }: SummaryCardProps) => {
   return (
-    <Card className={`space-y-3 ${size === 'small' && 'bg-transparent'}`}>
+    <Card
+      className={cn(
+        `space-y-3 ${size === 'small' && 'bg-transparent'}`,
+        className
+      )}
+    >
       <CardHeader className="pb-0">
         <CardTitle className="font-normal flex items-center gap-2 text-sm text-muted-foreground">
           <div

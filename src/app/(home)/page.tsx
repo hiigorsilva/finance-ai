@@ -1,8 +1,10 @@
+import { getDashboard } from '@/data/get-dashboard'
 import { auth } from '@clerk/nextjs/server'
 import { isMatch } from 'date-fns'
 import { redirect } from 'next/navigation'
 import { SummaryCards } from './components/summary-cards'
 import { TimeSelect } from './components/time-select'
+import { TransactionsPieChart } from './components/transactions-pie-chart'
 
 type HomeProps = {
   searchParams: {
@@ -22,14 +24,26 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect(`/?month=${currentMonth}`)
   }
 
+  const dashboard = await getDashboard(month)
+
   return (
-    <div className="space-y-6 px-6">
+    <div className="space-y-6 pb-8 px-6">
+      {/* HEADER */}
       <div className="flex justify-between items-center gap-8 py-6">
         <h1 className="font-bold text-2xl">Dashboard</h1>
         <TimeSelect />
       </div>
-      <div className="">
-        <SummaryCards month={month} />
+
+      <div className="grid grid-cols-[2fr,1fr]">
+        <div className="flex flex-col gap-6">
+          {/* SUMMARY CARDS */}
+          <SummaryCards month={month} {...dashboard} />
+
+          {/* CHART */}
+          <div className="grid grid-cols-3 grid-rows-1 gap-4">
+            <TransactionsPieChart {...dashboard} />
+          </div>
+        </div>
       </div>
     </div>
   )
