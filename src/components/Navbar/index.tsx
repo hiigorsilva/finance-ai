@@ -17,6 +17,7 @@ export const Navbar = () => {
           alt="Logo Finance AI"
           width={178}
           height={40}
+          priority
         />
 
         <Link

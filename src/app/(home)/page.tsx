@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs/server'
 import { isMatch } from 'date-fns'
 import { redirect } from 'next/navigation'
 import { ExpensesPerCategory } from './components/expenses-per-category'
+import { LastTransactions } from './components/last-transactions'
 import { SummaryCards } from './components/summary-cards'
 import { TimeSelect } from './components/time-select'
 import { TransactionsPieChart } from './components/transactions-pie-chart'
@@ -35,7 +36,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
         <TimeSelect />
       </div>
 
-      <div className="grid grid-cols-[2fr,1fr]">
+      <div className="grid grid-cols-[2fr,1fr] gap-6">
         <div className="flex flex-col gap-6">
           {/* SUMMARY CARDS */}
           <SummaryCards month={month} {...dashboard} />
@@ -48,6 +49,9 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
             />
           </div>
         </div>
+
+        {/* LAST TRANSACTIONS */}
+        <LastTransactions lastTransactions={dashboard.lastTransactions} />
       </div>
     </div>
   )

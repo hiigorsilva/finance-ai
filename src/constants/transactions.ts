@@ -31,6 +31,16 @@ export const TRANSACTION_CATEGORY_LABELS = {
   UTILITY: 'Utilidades',
 }
 
+export const TRANSACTION_PAYMENT_METHOD_ICONS = {
+  [TransactionPaymentMethod.BANK_TRANSFER]: '/icons/bank-transfer.svg',
+  [TransactionPaymentMethod.BANK_SLIP]: '/icons/bank-slip.svg',
+  [TransactionPaymentMethod.CASH]: '/icons/cash.svg',
+  [TransactionPaymentMethod.CREDIT_CARD]: '/icons/card.svg',
+  [TransactionPaymentMethod.DEBIT_CARD]: '/icons/card.svg',
+  [TransactionPaymentMethod.OTHER]: '/icons/other.svg',
+  [TransactionPaymentMethod.PIX]: '/icons/pix.svg',
+}
+
 export const TRANSACTION_PAYMENT_METHOD_LABELS = {
   BANK_TRANSFER: 'Transferência',
   BANK_SLIP: 'Boleto',
