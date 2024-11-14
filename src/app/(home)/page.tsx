@@ -31,7 +31,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
   return (
     <div className="space-y-6 pb-8 px-6">
       {/* HEADER */}
-      <div className="flex justify-between items-center gap-8 py-6">
+      <div className="flex justify-between items-center gap-8 pt-6">
         <h1 className="font-bold text-2xl">Dashboard</h1>
         <TimeSelect />
       </div>
@@ -42,7 +42,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <SummaryCards month={month} {...dashboard} />
 
           {/* CHART */}
-          <div className="grid grid-cols-3 grid-rows-1 gap-4">
+          <div className="h-full grid grid-cols-3 grid-rows-1 gap-4">
             <TransactionsPieChart {...dashboard} />
             <ExpensesPerCategory
               expensesPerCategory={dashboard.TotalExpensePerCategory}
