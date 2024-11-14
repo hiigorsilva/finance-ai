@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   description: 'Gerencie todas suas despesas e receitas com o Finance AI',
   keywords: 'Finance AI, Finance, Gerenciamento de despesas, Receitas',
   authors: [{ name: 'Higor Code' }],
+  icons: ['http://localhost:3000/favicon.svg'],
   appleWebApp: {
     capable: true,
     title: 'Fincane AI',
