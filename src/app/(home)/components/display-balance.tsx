@@ -16,7 +16,7 @@ export const DisplayBalance = ({ amount }: DisplayBalanceProps) => {
     <>
       {/* BALANCE */}
       {showBalance && (
-        <p className="font-bold text-4xl">{formatCurrency(amount)}</p>
+        <p className="font-bold text-4xl">{formatCurrency(Number(amount))}</p>
       )}
       {!showBalance && <p className="font-bold text-4xl">R$ ******</p>}
 

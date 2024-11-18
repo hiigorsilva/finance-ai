@@ -49,7 +49,7 @@ export const SummaryCard = ({
           <p
             className={`font-bold ${size === 'small' ? 'text-xl' : 'text-4xl'}`}
           >
-            {formatCurrency(amount)}
+            {formatCurrency(Number(amount))}
           </p>
         )}
 

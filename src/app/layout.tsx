@@ -52,9 +52,9 @@ export default function RootLayout({
           baseTheme: dark,
         }}
       >
-        <body className={`${mulish.className} antialiased dark`}>
+        <body className={`${mulish.className} flex flex-col antialiased dark`}>
           <Navbar />
-          {children}
+          <div className="flex-1">{children}</div>
           <Footer />
         </body>
       </ClerkProvider>
