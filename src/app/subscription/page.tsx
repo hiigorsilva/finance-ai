@@ -1,3 +1,4 @@
+import { getCurrentMonthTransactions } from '@/data/get-current-month-transactions'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { CardPlan } from './components/card-plan'
@@ -9,6 +10,7 @@ const SubscriptionPage = async () => {
   }
 
   const user = await clerkClient().users.getUser(userId)
+  const currentMonthTransactions = await getCurrentMonthTransactions()
   const hasPremiumPlan = user?.publicMetadata.subscriptionPlan === 'premium'
 
   return (
@@ -16,7 +18,10 @@ const SubscriptionPage = async () => {
       <h1 className="font-bold text-2xl">Assinatura</h1>
 
       <div className="flex gap-6">
-        <CardPlan plan="free" />
+        <CardPlan
+          plan="free"
+          currentMonthTransactions={currentMonthTransactions}
+        />
         <CardPlan plan="premium" hasPremiumPlan={hasPremiumPlan} />
       </div>
     </div>

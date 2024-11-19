@@ -10,6 +10,7 @@ type SummaryCardProps = {
   title: 'Investido' | 'Receita' | 'Despesa' | 'Saldo'
   amount: number
   size?: 'small' | 'large'
+  userCanAddTransaction?: boolean
   className?: string
 }
 
@@ -18,6 +19,7 @@ export const SummaryCard = ({
   title,
   amount,
   size = 'small',
+  userCanAddTransaction,
   className,
 }: SummaryCardProps) => {
   return (
@@ -58,7 +60,9 @@ export const SummaryCard = ({
             <div className="flex items-center gap-3">
               <DisplayBalance amount={amount} />
             </div>
-            <AddTransactionButton />
+            <AddTransactionButton
+              userCanAddTransaction={userCanAddTransaction}
+            />
           </>
         )}
       </CardContent>

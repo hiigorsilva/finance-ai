@@ -6,9 +6,14 @@ import { AcquirePlanButton } from './acquire-plan-button'
 type CardPlanProps = {
   plan: 'free' | 'premium'
   hasPremiumPlan?: boolean
+  currentMonthTransactions?: number
 }
 
-export const CardPlan = ({ plan, hasPremiumPlan }: CardPlanProps) => {
+export const CardPlan = ({
+  plan,
+  hasPremiumPlan,
+  currentMonthTransactions,
+}: CardPlanProps) => {
   return (
     <Card className="max-w-md w-full">
       <CardHeader className="gap-4 text-center p-8 border-b border-solid">
@@ -41,8 +46,13 @@ export const CardPlan = ({ plan, hasPremiumPlan }: CardPlanProps) => {
             <div className="flex items-center gap-3">
               <CheckIcon className="size-6 text-primary" />
               <p>
-                Apenas 10 transações por dia (
-                <span className="font-bold text-primary">7</span>/10)
+                Apenas 10 transações por mês (
+                <span
+                  className={`font-bold ${(currentMonthTransactions as number) < 10 ? 'text-primary' : 'text-red-500'}`}
+                >
+                  {currentMonthTransactions}
+                </span>
+                /10 )
               </p>
             </div>
 

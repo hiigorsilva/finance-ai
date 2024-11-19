@@ -1,3 +1,4 @@
+import { canUserAddTransaction } from '@/data/can-user-add-transaction'
 import { getDashboard } from '@/data/get-dashboard'
 import { auth } from '@clerk/nextjs/server'
 import { isMatch } from 'date-fns'
@@ -27,6 +28,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
   }
 
   const dashboard = await getDashboard(month)
+  const userCanAddTransaction = await canUserAddTransaction()
 
   return (
     <div className="space-y-6 pb-8 px-6">
@@ -39,7 +41,11 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
       <div className="grid grid-cols-[2fr,1fr] gap-6">
         <div className="flex flex-col gap-6">
           {/* SUMMARY CARDS */}
-          <SummaryCards month={month} {...dashboard} />
+          <SummaryCards
+            month={month}
+            {...dashboard}
+            userCanAddTransaction={userCanAddTransaction}
+          />
 
           {/* CHART */}
           <div className="h-full grid grid-cols-3 grid-rows-1 gap-4">

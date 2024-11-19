@@ -1,6 +1,7 @@
 // import { Navbar } from '@/components/Navbar'
 import { AddTransactionButton } from '@/components/add-transaction-button'
 import { DataTable } from '@/components/ui/data-table'
+import { canUserAddTransaction } from '@/data/can-user-add-transaction'
 import { db } from '@/lib/prisma'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
@@ -21,6 +22,8 @@ const TransactionsPage = async () => {
     },
   })
 
+  const userCanAddTransaction = await canUserAddTransaction()
+
   return (
     <div>
       <div className="space-y-6 p-6">
@@ -28,7 +31,7 @@ const TransactionsPage = async () => {
         <div className="w-full flex justify-between items-center gap-4">
           <h1 className="font-bold text-2xl">Transações</h1>
 
-          <AddTransactionButton />
+          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
         </div>
 
         <DataTable
