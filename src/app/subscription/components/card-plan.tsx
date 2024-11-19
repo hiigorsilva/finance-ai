@@ -5,9 +5,10 @@ import { AcquirePlanButton } from './acquire-plan-button'
 
 type CardPlanProps = {
   plan: 'free' | 'premium'
+  hasPremiumPlan?: boolean
 }
 
-export const CardPlan = ({ plan }: CardPlanProps) => {
+export const CardPlan = ({ plan, hasPremiumPlan }: CardPlanProps) => {
   return (
     <Card className="max-w-md w-full">
       <CardHeader className="gap-4 text-center p-8 border-b border-solid">
@@ -17,9 +18,11 @@ export const CardPlan = ({ plan }: CardPlanProps) => {
             {plan === 'free' ? 'Plano Free' : 'Plano Premium'}
           </h2>
 
-          <Badge className="absolute top-1/2 left-0 -translate-y-1/2 w-fit text-primary bg-primary/15 ">
-            Atual
-          </Badge>
+          {plan === 'premium' && hasPremiumPlan && (
+            <Badge className="absolute top-1/2 left-0 -translate-y-1/2 w-fit text-primary bg-primary/15 ">
+              Ativo
+            </Badge>
+          )}
         </div>
 
         {/* PRICE */}
@@ -38,8 +41,8 @@ export const CardPlan = ({ plan }: CardPlanProps) => {
             <div className="flex items-center gap-3">
               <CheckIcon className="size-6 text-primary" />
               <p>
-                Apenas 10 transações por dia{' '}
-                <span className="font-bold text-primary">7</span>/10
+                Apenas 10 transações por dia (
+                <span className="font-bold text-primary">7</span>/10)
               </p>
             </div>
 

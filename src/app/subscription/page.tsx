@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { CardPlan } from './components/card-plan'
 
@@ -8,13 +8,16 @@ const SubscriptionPage = async () => {
     return redirect('/login')
   }
 
+  const user = await clerkClient().users.getUser(userId)
+  const hasPremiumPlan = user?.publicMetadata.subscriptionPlan === 'premium'
+
   return (
     <div className="space-y-6 p-6">
       <h1 className="font-bold text-2xl">Assinatura</h1>
 
       <div className="flex gap-6">
         <CardPlan plan="free" />
-        <CardPlan plan="premium" />
+        <CardPlan plan="premium" hasPremiumPlan={hasPremiumPlan} />
       </div>
     </div>
   )
