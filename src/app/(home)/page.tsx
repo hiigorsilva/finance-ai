@@ -3,6 +3,7 @@ import { getDashboard } from '@/data/get-dashboard'
 import { auth } from '@clerk/nextjs/server'
 import { isMatch } from 'date-fns'
 import { redirect } from 'next/navigation'
+import { AiReportButton } from './components/ai-report-button'
 import { ExpensesPerCategory } from './components/expenses-per-category'
 import { LastTransactions } from './components/last-transactions'
 import { SummaryCards } from './components/summary-cards'
@@ -35,7 +36,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
       {/* HEADER */}
       <div className="flex justify-between items-center gap-8 pt-6">
         <h1 className="font-bold text-2xl">Dashboard</h1>
-        <TimeSelect />
+        <div className="flex items-center gap-3">
+          <AiReportButton month={month} />
+          <TimeSelect />
+        </div>
       </div>
 
       <div className="grid grid-cols-[2fr,1fr] gap-6">
