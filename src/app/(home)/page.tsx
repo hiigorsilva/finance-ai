@@ -1,6 +1,6 @@
 import { canUserAddTransaction } from '@/data/can-user-add-transaction'
 import { getDashboard } from '@/data/get-dashboard'
-import { auth } from '@clerk/nextjs/server'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import { isMatch } from 'date-fns'
 import { redirect } from 'next/navigation'
 import { AiReportButton } from './components/ai-report-button'
@@ -30,6 +30,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
 
   const dashboard = await getDashboard(month)
   const userCanAddTransaction = await canUserAddTransaction()
+  const user = await clerkClient().users.getUser(userId)
 
   return (
     <div className="space-y-6 pb-8 px-6">
@@ -37,7 +38,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
       <div className="flex justify-between items-center gap-8 pt-6">
         <h1 className="font-bold text-2xl">Dashboard</h1>
         <div className="flex items-center gap-3">
-          <AiReportButton month={month} />
+          <AiReportButton
+            month={month}
+            hasPremiumPlan={user.publicMetadata.subscriptionPlan === 'premium'}
+          />
           <TimeSelect />
         </div>
       </div>

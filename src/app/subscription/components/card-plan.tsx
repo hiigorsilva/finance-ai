@@ -28,6 +28,12 @@ export const CardPlan = ({
               Ativo
             </Badge>
           )}
+
+          {plan === 'free' && !hasPremiumPlan && (
+            <Badge className="absolute top-1/2 left-0 -translate-y-1/2 w-fit text-primary bg-primary/15 ">
+              Ativo
+            </Badge>
+          )}
         </div>
 
         {/* PRICE */}
