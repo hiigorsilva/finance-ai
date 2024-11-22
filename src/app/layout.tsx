@@ -5,6 +5,7 @@ import { Mulish } from 'next/font/google'
 import '@/app/globals.css'
 import { Footer } from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
+import { Toaster } from '@/components/ui/sonner'
 
 const mulish = Mulish({
   display: 'swap',
@@ -56,6 +57,7 @@ export default function RootLayout({
           <Navbar />
           <div className="flex-1">{children}</div>
           <Footer />
+          <Toaster />
         </body>
       </ClerkProvider>
     </html>

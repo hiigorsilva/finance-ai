@@ -47,6 +47,7 @@ import { useForm } from 'react-hook-form'
 import type { z } from 'zod'
 
 import { useEffect } from 'react'
+import { toast } from 'sonner'
 import { MoneyInput } from './money-input'
 import { DatePicker } from './ui/date-picker'
 
@@ -82,10 +83,12 @@ export const UpsertTransactionDialog = ({
   const onSubmit = async (data: FormSchema) => {
     try {
       await upsertTransaction({ ...data, id: transactionId })
+      toast.success('Transação adicionada com sucesso!')
       setIsOpen(false)
       form.reset()
     } catch (err) {
       console.error(err)
+      toast.error('Erro ao adicionar transação')
     }
   }
 
