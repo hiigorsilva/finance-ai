@@ -18,7 +18,7 @@ const TransactionsPage = async () => {
       userId: userId,
     },
     orderBy: {
-      date: 'asc',
+      date: 'desc',
     },
   })
 
