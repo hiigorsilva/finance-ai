@@ -2,12 +2,11 @@ import type React from 'react'
 import { forwardRef } from 'react'
 import { NumericFormat, type NumericFormatProps } from 'react-number-format'
 
-import { Input } from '@/components/ui/input'
-import type { InputDayPickerProps } from 'react-day-picker'
+import { Input, type InputProps } from '@/components/ui/input'
 
 export const MoneyInput = forwardRef(
   (
-    props: NumericFormatProps<InputDayPickerProps>,
+    props: NumericFormatProps<InputProps>,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     return (
