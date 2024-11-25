@@ -35,7 +35,7 @@ export const DeleteTransactionButton = ({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger asChild>
         <Button size="icon" variant="ghost" className="text-muted-foreground">
           <Trash className="size-5" />
         </Button>
