@@ -1,27 +1,14 @@
 'use client'
 
-import { deleteTransaction } from '@/actions/delete-transaction'
-import { Button } from '@/components/ui/button'
 import {
   TRANSACTION_CATEGORY_LABELS,
   TRANSACTION_PAYMENT_METHOD_LABELS,
 } from '@/constants/transactions'
 import type { Transaction } from '@prisma/client'
 import type { ColumnDef } from '@tanstack/react-table'
-import { TrashIcon } from 'lucide-react'
-import { toast } from 'sonner'
+import { DeleteTransactionButton } from '../components/delete-transaction-button'
 import { EditTransactionButton } from '../components/edit-transaction-button'
 import { TransactionTypeBadge } from '../components/type-badge'
-
-const handleDeleteTransaction = async (id: string) => {
-  try {
-    await deleteTransaction(id)
-    toast.success('Transação excluída com sucesso!')
-  } catch (err) {
-    console.error(err)
-    toast.error('Erro ao deletar transação!')
-  }
-}
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
   {
@@ -74,14 +61,7 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
         <div className="flex items-center gap-1">
           <EditTransactionButton transaction={transaction} />
 
-          <Button
-            onClick={() => handleDeleteTransaction(transaction.id)}
-            variant="ghost"
-            size="icon"
-            className="text-muted-foreground"
-          >
-            <TrashIcon className="size-5" />
-          </Button>
+          <DeleteTransactionButton transactionId={transaction.id} />
         </div>
       )
     },
