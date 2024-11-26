@@ -23,14 +23,7 @@ export const CardPlan = ({
             {plan === 'free' ? 'Plano Free' : 'Plano Premium'}
           </h2>
 
-          {plan === 'premium' && hasPremiumPlan && (
-            <Badge className="absolute top-1/2 left-0 -translate-y-1/2 w-fit text-primary bg-primary/15 ">
-              Ativo
-            </Badge>
-          )}
-
-          {/* TODO: Remover o Budget do card FREE quando o plano premium estiver ativo */}
-          {plan === 'free' && !hasPremiumPlan && (
+          {hasPremiumPlan && (
             <Badge className="absolute top-1/2 left-0 -translate-y-1/2 w-fit text-primary bg-primary/15 ">
               Ativo
             </Badge>
